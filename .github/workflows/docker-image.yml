@@ -6,25 +6,25 @@ on:
 
 jobs:
 
-  super-lint:
-    name: Lint the code
-    runs-on: ubuntu-latest
-    steps:
-     - name: Checkout code
-       uses: actions/checkout@v4
-
-     - name: Run super linter
-       uses: github/super-linter@v4
-       env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
-
-#  build:
-
+#  super-lint:
+#    name: Lint the code
 #    runs-on: ubuntu-latest
-
 #    steps:
-#    - uses: actions/checkout@v4
-#    - name: Build the Docker image
-#      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+#     - name: Checkout code
+#       uses: actions/checkout@v4
+
+#     - name: Run super linter
+#       uses: github/super-linter@v4
+#       env:
+#          DEFAULT_BRANCH: main
+#          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
