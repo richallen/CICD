@@ -1,0 +1,30 @@
+name: Publish Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  super-lint:
+    name: Lint the code
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout code
+       uses: actions/checkout@v4
+
+     - name: Run super linter
+       uses: github/super-linter@v4
+       env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+#  build:
+
+#    runs-on: ubuntu-latest
+
+#    steps:
+#    - uses: actions/checkout@v4
+#    - name: Build the Docker image
+#      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
