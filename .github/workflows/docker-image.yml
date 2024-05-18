@@ -7,7 +7,6 @@ on:
 jobs:
   tests:
     uses: ./.github/workflows/lint-and-test.yml
-tests:
   build:
     name: build
     needs: [tests] # Lint and tests must pass
