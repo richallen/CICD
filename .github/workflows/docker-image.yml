@@ -38,9 +38,7 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest pytest-cov
-        pytest test_server.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+        pytest test_server.py --doctest-modules --junitxml=junit/test-results.xml 
 
-
-    
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag test1:$(date +%s)
