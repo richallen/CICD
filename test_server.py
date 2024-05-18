@@ -61,7 +61,8 @@ class JSONTest(unittest.TestCase):
         except jsonschema.exceptions.ValidationError:
             status = False
         print (status)
-        self.assertTrue(status)
+        #self.assertTrue(status)
+        self.assertFalse(status) # Deliberate fail to check pipeline stops after fail
 
 if __name__ == '__main__':
     unittest.main()
