@@ -19,13 +19,7 @@ jobs:
            DEFAULT_BRANCH: main
            VALIDATE_PYTHON_PYLINT: true
            GITHUB_TOKEN: ${{ secrets.TOKEN }}
-           
-  pytest:
-    name: Pytest the code
-    runs-on: ubuntu-latest
-
-  
-  
+        
   build:
 
     runs-on: ubuntu-latest
