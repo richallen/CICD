@@ -10,7 +10,5 @@ RUN pip3 install flask
 RUN pip3 install waitress
 RUN pip3 install paste
 COPY flask_server.py .
-#ENTRYPOINT ["/usr/bin/python3","/home/user/flask_server.py"]
 EXPOSE 9000
-#VOLUME ~/.
 ENTRYPOINT ["/usr/bin/python3","flask_server.py"]
