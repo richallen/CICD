@@ -1,16 +1,19 @@
-#! /usr/bin/python3
+"""
+A trivial server to respond with a JSON API
+"""
+
 import datetime
 import json
 from flask import Flask
-from waitress import serve
 from flask import Response
+from waitress import serve
 
-applicationName = "Application Test 1"
-hostName = "0.0.0.0"
+APPLICATION_NAME = "Application Test 1"
+HOST_NAME = "0.0.0.0"
 PORT = 9000
 
 data = {
-    applicationName: [
+    APPLICATION_NAME: [
         {
             "version": "1.0",
             "description": "pre-interview technical test",
@@ -25,12 +28,13 @@ app = Flask(__name__)
 @app.route('/healthcheck')
 
 def healthcheck():
-    data[applicationName][0]["UTC"] = datetime.datetime.now(datetime.UTC).strftime(
+    """String response to healthcheck endpoint """
+    data[APPLICATION_NAME][0]["UTC"] = datetime.datetime.now(datetime.UTC).strftime(
         '%Y-%m-%d %H:%M:%S'
     )
     return (Response(json.dumps(data),mimetype = "application/vnd.api+json"))
 
 if __name__ == "__main__":
-  print("Server started http://%s:%s"%(hostName, PORT))
-  serve(app,host = hostName,port = PORT)
-  print("Server stopped")
+    print(f"Server started http://%s:%s"%(HOST_NAME, PORT))
+    serve(app,host = HOST_NAME,port = PORT)
+    print("Server stopped")
