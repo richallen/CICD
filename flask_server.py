@@ -2,7 +2,7 @@
 A trivial server to respond with a JSON API
 """
 
-import datetime
+from datetime import datetime, timezone
 import json
 from flask import Flask
 from flask import Response
@@ -19,22 +19,27 @@ data = {
             "description": "pre-interview technical test",
             "lastcommitsha": "abc57858585",
             "UTC": "",
-        }
+        },
     ]
 }
 
 app = Flask(__name__)
 
+def healthstring():
+    """String response to healthcheck endpoint """
+    data[APPLICATION_NAME][0]["UTC"] = datetime.now(timezone.utc).strftime(
+        '%Y-%m-%dT%H:%M:%S'
+    )
+    return json.dumps(data)
+
+
 @app.route('/healthcheck')
 
 def healthcheck():
-    """String response to healthcheck endpoint """
-    data[APPLICATION_NAME][0]["UTC"] = datetime.datetime.now(datetime.UTC).strftime(
-        '%Y-%m-%d %H:%M:%S'
-    )
-    return (Response(json.dumps(data),mimetype = "application/vnd.api+json"))
+    """HTTP response to healthcheck endpoint """
+    return (Response(healthstring(),mimetype = "application/vnd.api+json"))
 
 if __name__ == "__main__":
-    print(f"Server started http://%s:%s"%(HOST_NAME, PORT))
+    print("Server started http://%s:%s"%(HOST_NAME, PORT))
     serve(app,host = HOST_NAME,port = PORT)
     print("Server stopped")
