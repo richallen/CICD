@@ -9,4 +9,4 @@ jobs:
   if_merged:
     if: github.event.pull_request.merged
       tests:
-      uses: ./.github/workflows/lint-and-test.yml
+        uses: ./.github/workflows/lint-and-test.yml
