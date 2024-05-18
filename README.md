@@ -1,4 +1,7 @@
 # CICD
-CICD demo which sets up a basic Python Flask application, whose /healthcheck endpoint returns a JSON-based API reporting the GIT commit hash, and commit comment, are reported back along with a version number.  Unit tests are automatically run as part of the CICD pipeline.
+CICD demo which sets up a basic Python Flask application, whose /healthcheck endpoint returns a JSON-based API.  The API returns the GIT commit hash, and commit comment, along with a version number.  
 
-CICD pipeline runs in Jenkins.
+CICD pipeline runs:
+  Unit tests in Python (mainly validity of the JSON returned by the API)
+  Linting in Python
+  Docker build
