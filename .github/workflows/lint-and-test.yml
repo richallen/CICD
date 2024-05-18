@@ -1,4 +1,4 @@
-name: Publish Docker Image CI
+name: Lint and Unit Test
 
 on: [workflow_call]
 jobs:
