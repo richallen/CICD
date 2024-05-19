@@ -23,7 +23,7 @@ logger = logging.getLogger('waitress')
 data = {
     APPLICATION_NAME: [
         {
-            "version": "local_docker",
+            "version": "local_run",
             "description": "",
             "lastcommitsha": "",
             "UTC": "",
@@ -36,7 +36,6 @@ app = Flask(__name__)
 def healthstring():
     """String response to healthcheck endpoint """
 
-    print (os.environ)
     if ('CI' in os.environ): # Must use CI flag in CI build
 
         if ('CI_DESCRIPTION' in os.environ):
@@ -59,7 +58,7 @@ def healthstring():
         data[APPLICATION_NAME][0]["lastcommitsha"] = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode('utf-8').rstrip()
 
     data[APPLICATION_NAME][0]["UTC"] = datetime.now(timezone.utc).strftime(
-        '%Y-%m-%dT%H:%M:%S'   # Build time
+        '%Y-%m-%dT%H:%M:%S'   # Request time
     )
 
     return json.dumps(data)

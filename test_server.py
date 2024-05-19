@@ -19,7 +19,7 @@ schema = {
           "properties": {
             "version": {
               "type": "string",
-              "pattern": "^[0-9.]+$" # digits and dots
+              # Actually version seems to be a description, not numbers.  "pattern": "^[0-9.]+$" # digits and dots
             },
             "description": {
               "type": "string"
