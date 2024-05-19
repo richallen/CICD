@@ -10,7 +10,13 @@ RUN pip3 install flask
 RUN pip3 install waitress
 RUN pip3 install paste
 COPY flask_server.py .
-#ENTRYPOINT ["/usr/bin/python3","/home/user/flask_server.py"]
 EXPOSE 9000
-#VOLUME ~/.
+ARG ci
+ARG ci_version
+ARG ci_sha
+ARG ci_description
+ENV CI_SHA=$ci_sha
+ENV CI_DESCRIPTION=$ci_description
+ENV CI_VERSION=$ci_version
+ENV CI=true
 ENTRYPOINT ["/usr/bin/python3","flask_server.py"]

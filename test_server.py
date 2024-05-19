@@ -57,10 +57,9 @@ class JSONTest(unittest.TestCase):
 
         status = True
         try:
-            jsonschema.validate(instance=reply,schema=schema)
+            jsonschema.validate(instance = reply,schema = schema)
         except jsonschema.exceptions.ValidationError:
             status = False
-        print (status)
         self.assertTrue(status)
 
 if __name__ == '__main__':
