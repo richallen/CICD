@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag test1:$(date +%s)
+      run: docker build . --file Dockerfile --build-arg=ci="CI" --build-arg=ci_sha=$COMMIT_SHA --build-arg=ci_description="$(git log -1 --pretty=%B | tr -d "\n")" --build-arg=ci_version="ci-docker" --tag test1:$(date +%s)
