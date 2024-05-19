@@ -46,7 +46,7 @@ def healthstring():
         if ('CI_SHA' in os.environ):
           data[APPLICATION_NAME][0]["lastcommitsha"] = os.environ.get('CI_SHA')
         else:
-          data[APPLICATION_NAME][0]["lastcommitsha"] = 'No sha provided'
+          data[APPLICATION_NAME][0]["lastcommitsha"] = '000000000' # So it matches regex looking for hex
 
         if ('CI_VERSION' in os.environ):
           data[APPLICATION_NAME][0]["version"] = os.environ.get('CI_VERSION')
