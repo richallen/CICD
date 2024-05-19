@@ -16,7 +16,7 @@ jobs:
            DEFAULT_BRANCH: main
            VALIDATE_PYTHON_PYLINT: true
            GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -33,4 +33,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest pytest-cov
-        pytest test_server.py --doctest-modules --junitxml=junit/test-results.xml 
+        pytest test_server.py -s --doctest-modules --junitxml=junit/test-results.xml

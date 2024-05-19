@@ -54,7 +54,8 @@ class JSONTest(unittest.TestCase):
     def test(self):
         """ Validate the string against a JSON schema """
         reply=json.loads(flask_server.healthstring())
-
+        print (flask_server.healthstring())
+        print (reply)
         status = True
         try:
             jsonschema.validate(instance = reply,schema = schema)
